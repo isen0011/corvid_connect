@@ -7,4 +7,7 @@ class Project
 
   def add_block(block:)
   end
+
+  def save_changes
+  end
 end
