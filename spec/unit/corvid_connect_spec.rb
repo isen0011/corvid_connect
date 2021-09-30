@@ -14,6 +14,7 @@ RSpec.describe CorvidConnect do
       allow(proj_gen_stub).to receive(:new).with(file: dest).and_return(dest_stub)
       allow(source_stub).to receive(:extract_block).with(block: block_name).and_return(block)
       allow(dest_stub).to receive(:add_block).with(block: block)
+      allow(dest_stub).to receive(:save_changes)
     end
 
     it "instantiates two Projects" do
@@ -29,6 +30,11 @@ RSpec.describe CorvidConnect do
 
     it "adds the extracted block to dest" do
       expect(dest_stub).to receive(:add_block).with(block: block)
+      CorvidConnect.copy_block(source: source, destination: dest, block: block_name, project_generator: proj_gen_stub)
+    end
+
+    it "saves the dest projected" do
+      expect(dest_stub).to receive(:save_changes)
       CorvidConnect.copy_block(source: source, destination: dest, block: block_name, project_generator: proj_gen_stub)
     end
   end
