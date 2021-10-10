@@ -10,8 +10,8 @@ RSpec.describe "Copy blocks into existing project" do
     FileUtils.cp(destination_project_original_file_name, destination_project_file_name)
   end
 
-  it "copies a block from one project into another" do
-    CorvidConnect.copy_block(source: source_project_file_name, destination: destination_project_file_name, block: "Sample Block Name")
+  it "copies all blocks from one project into another" do
+    CorvidConnect.copy_blocks(source: source_project_file_name, destination: destination_project_file_name)
     expect(destination_project_file_name).to be_same_file_as(destination_final_state)
   end
 end

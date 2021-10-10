@@ -2,10 +2,10 @@ class Project
   def initialize(file:)
   end
 
-  def extract_block(block:)
+  def extract_blocks
   end
 
-  def add_block(block:)
+  def add_blocks(blocks:)
   end
 
   def save_changes
